@@ -1,6 +1,10 @@
-# LoveWithX - 恋愛特化型 Claude エージェント
+# LoveWithX - 恋愛心理学習プログラム
 
 女性らしさ、可愛げ、相手を引き出す恋愛スキルを学ぶための AI 学習システム。
+
+デヴィという恋愛コーチと Claude.ai で対話しながら、恋愛心理学を体系的に習得します。
+
+**GitHub**: https://github.com/Hachi-Lawliet/LoveWithX
 
 ---
 
@@ -10,7 +14,7 @@
 
 **学習内容**：
 - 恋愛心理学の理論（愛着理論、ビッグファイブなど）
-- エージェント「菫」の女らしい言動・対応パターン
+- エージェント「デヴィ」の女らしい言動・対応パターン
 - 複数の診断を通じた自己理解
 - 実践的な「あざとさ」の習得
 
@@ -61,44 +65,110 @@ LoveWithX/
 
 ## 使い方
 
-### 1. 基本的な学習フロー
+### 1. クイックスタート（推奨フロー）
 
 ```
-① 菫と対話して理論を学ぶ
+① CLI で診断を実施
+   ├─ ビッグファイブ診断（10問）
+   └─ 愛着タイプ診断（20問）
    ↓
-② 診断を受ける（ビッグファイブ、愛着タイプなど）
+② 診断結果を Claude.ai にペースト
    ↓
-③ 診断結果に基づいてアドバイスを受ける
+③ デヴィが自動で第1章から講義開始
    ↓
-④ エピソードを共有 → 菫のやり方を観察・習得
+④ 7章を学習 → エピソード分析
    ↓
 ⑤ 実践 → 改善
 ```
 
-### 2. クイックスタート
+### 2. ステップバイステップ
 
-**菫との対話を開始する**：
+#### **ステップ1：CLI で診断を実施**
+
 ```bash
-# Claude Code で LoveWithX を開く
-# 「カリキュラムを始めたいです」と伝える
-# 菫がキャラクター設定に基づいて応答
+cd cli
+npm install
+npm run dev
 ```
 
-**特定の診断を受ける**：
+実行内容：
+- ユーザー名を入力
+- ビッグファイブ診断（10問）に回答
+- 愛着タイプ診断（20問）に回答
+- 診断結果が表示される
+- `results/{userId}_diagnostic.json` に保存
+
+#### **ステップ2：Claude.ai を開く**
+
+**PC の場合**：
 ```
-「ビッグファイブ診断を受けたいです」
-→ 菫が10問の質問を出題
-→ 回答をスコアリング
-→ 結果と恋愛への応用を提示
+https://claude.ai/
+→ 新しいチャットを開始
 ```
 
-**エピソード分析**：
+**スマホの場合**：
 ```
-「昨日こういう場面で、こう反応してしまいました」
-→ 菫がエピソードを分析
-→ 相手の心理状態を推測
-→ 「菫のやり方」を提示して習得
+Claude アプリを開く
+→ 新しいチャットを開始
 ```
+
+#### **ステップ3：診断結果を入力**
+
+1. **CLI で保存された JSON をコピー**
+2. **Claude.ai のチャット入力欄にペースト**
+3. **送信**
+
+デヴィが自動で対応します（カスタム指示設定済みの場合）
+
+#### **ステップ4：デヴィとの講義を開始**
+
+デヴィが診断結果に基づいて、第1章から順序通り講義を進めます。
+
+### 3. カスタム指示の設定（重要）
+
+**初回セットアップ**：
+
+1. **Claude.ai または Claude アプリを開く**
+2. **右上の設定⚙️をクリック**
+3. **「Custom Instructions」を選択**
+4. **以下の内容をペースト**：
+
+```
+## あなたの役割
+
+あなたは「デヴィ」という恋愛コーチです。
+以下の設定を厳密に守ってください：
+
+GitHub 設定ファイル：
+https://github.com/Hachi-Lawliet/LoveWithX/blob/main/CLAUDE.md
+
+## 学習カリキュラム
+
+全7章を順序通り進めてください：
+https://github.com/Hachi-Lawliet/LoveWithX/blob/main/curriculum/curriculum_romance_psychology.md
+
+## 知識ベース
+
+必要に応じて以下の論文サマリーを参照：
+- 愛着理論: https://github.com/Hachi-Lawliet/LoveWithX/blob/main/knowledge/papers_summary_attachment.md
+- ビッグファイブ: https://github.com/Hachi-Lawliet/LoveWithX/blob/main/knowledge/papers_summary_personality.md
+- 恋愛感情: https://github.com/Hachi-Lawliet/LoveWithX/blob/main/knowledge/papers_summary_romantic_love.md
+- 男女の違い: https://github.com/Hachi-Lawliet/LoveWithX/blob/main/knowledge/papers_summary_gender_differences.md
+- コミュニケーション: https://github.com/Hachi-Lawliet/LoveWithX/blob/main/knowledge/papers_summary_communication.md
+- 信頼と親密さ: https://github.com/Hachi-Lawliet/LoveWithX/blob/main/knowledge/papers_summary_trust_intimacy.md
+- 男性らしさ: https://github.com/Hachi-Lawliet/LoveWithX/blob/main/knowledge/papers_summary_masculinity.md
+
+## 初回対応
+
+ユーザーが診断結果（JSON）をペーストしたら、
+その結果をもとに第1章から講義を開始してください。
+
+タイプ別に最適な説明を心がけてください。
+```
+
+5. **保存**
+
+これ以降、新しいチャットを開くたびにデヴィが自動で機能します。
 
 ---
 

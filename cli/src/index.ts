@@ -100,11 +100,11 @@ async function main() {
 
     const continueChoice = await selectOption(
       '何をしますか？',
-      ['第1章を開始する', 'ダッシュボードを表示する', '終了する']
+      ['Claude.ai で講義を開始', 'ダッシュボードを表示する', '終了する']
     );
 
     if (continueChoice === 0) {
-      printInfo('第1章の講義機能は後で実装予定です。');
+      launchDeviLecture(diagnosticResult);
     } else if (continueChoice === 1) {
       displayDashboard(userName, diagnosticResult);
     }
@@ -122,6 +122,44 @@ async function main() {
  */
 function generateUserId(): string {
   return `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+}
+
+/**
+ * デヴィ講義へのランチャー
+ */
+function launchDeviLecture(result: DiagnosticResult): void {
+  printSection('デヴィとの講義を開始');
+
+  const deviMessage = `
+🌸 Claude.ai でデヴィとの講義を開始します
+
+【ステップ1】以下をコピー：
+
+${JSON.stringify(result, null, 2)}
+
+【ステップ2】Claude.ai を開く
+
+PC: https://claude.ai/
+スマホ: Claude アプリを開く
+
+【ステップ3】新しいチャットを開く
+
+左側の「+ New Chat」をクリック
+
+【ステップ4】上記の診断結果をペースト
+
+入力欄に貼り付けて送信
+
+【ステップ5】デヴィが自動で対応
+
+✨ カスタム指示が設定済みの場合は、デヴィが自動で第1章から講義を開始します。
+
+📖 カスタム指示の設定方法:
+https://github.com/Hachi-Lawliet/LoveWithX#カスタム指示の設定重要
+  `;
+
+  console.log(deviMessage);
+  printSuccess('Claude.ai を開いてください！');
 }
 
 /**
