@@ -1,0 +1,30 @@
+# Node.js
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# CLI Results (keep empty, but ignore contents)
+cli/results/*.json
+
+# Temporary
+*.tmp
+.cache/
